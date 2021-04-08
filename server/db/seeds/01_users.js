@@ -1,5 +1,5 @@
 exports.seed = function(knex) {
-    // Deletes ALL existing entries
+ // Deletes ALL existing entries
     return knex('users')
         .del()
         .then(function() {
@@ -7,9 +7,9 @@ exports.seed = function(knex) {
             return knex('users').insert([
                 {
                     id: 1,
-                    name: 'Pratik Agashe',
-                    email: 'pratik@heady.io',
-                    password: 'pratik',
+                    name: 'Anas Boukharta',
+                    email: 'anasboukhartak@gmail.com',
+                    password: 'anasboukharta',
                 },
             ])
         })

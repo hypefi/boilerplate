@@ -54,8 +54,9 @@ const UpdateUser = (props: updateUser) => {
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        if (values.name && values.id) {
-            updateUser()
+        console.log(values.name, values.id);
+      if (values.name ) {
+          updateUser()
         } else {
             alert('Invalid user details')
         }
