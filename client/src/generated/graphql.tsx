@@ -17,6 +17,7 @@ export type Scalars = {
   Datetime: any,
 };
 
+
 export type Comment = Node & {
    __typename?: 'Comment',
   nodeId: Scalars['ID'],
@@ -115,6 +116,42 @@ export type CreateCommentPayloadCommentEdgeArgs = {
   orderBy?: Maybe<Array<CommentsOrderBy>>
 };
 
+export type CreateKnexMigrationInput = {
+  clientMutationId?: Maybe<Scalars['String']>,
+  knexMigration: KnexMigrationInput,
+};
+
+export type CreateKnexMigrationPayload = {
+   __typename?: 'CreateKnexMigrationPayload',
+  clientMutationId?: Maybe<Scalars['String']>,
+  knexMigration?: Maybe<KnexMigration>,
+  query?: Maybe<Query>,
+  knexMigrationEdge?: Maybe<KnexMigrationsEdge>,
+};
+
+
+export type CreateKnexMigrationPayloadKnexMigrationEdgeArgs = {
+  orderBy?: Maybe<Array<KnexMigrationsOrderBy>>
+};
+
+export type CreateKnexMigrationsLockInput = {
+  clientMutationId?: Maybe<Scalars['String']>,
+  knexMigrationsLock: KnexMigrationsLockInput,
+};
+
+export type CreateKnexMigrationsLockPayload = {
+   __typename?: 'CreateKnexMigrationsLockPayload',
+  clientMutationId?: Maybe<Scalars['String']>,
+  knexMigrationsLock?: Maybe<KnexMigrationsLock>,
+  query?: Maybe<Query>,
+  knexMigrationsLockEdge?: Maybe<KnexMigrationsLocksEdge>,
+};
+
+
+export type CreateKnexMigrationsLockPayloadKnexMigrationsLockEdgeArgs = {
+  orderBy?: Maybe<Array<KnexMigrationsLocksOrderBy>>
+};
+
 export type CreatePostInput = {
   clientMutationId?: Maybe<Scalars['String']>,
   post: PostInput,
@@ -178,6 +215,54 @@ export type DeleteCommentPayload = {
 
 export type DeleteCommentPayloadCommentEdgeArgs = {
   orderBy?: Maybe<Array<CommentsOrderBy>>
+};
+
+export type DeleteKnexMigrationByIdInput = {
+  clientMutationId?: Maybe<Scalars['String']>,
+  id: Scalars['Int'],
+};
+
+export type DeleteKnexMigrationInput = {
+  clientMutationId?: Maybe<Scalars['String']>,
+  nodeId: Scalars['ID'],
+};
+
+export type DeleteKnexMigrationPayload = {
+   __typename?: 'DeleteKnexMigrationPayload',
+  clientMutationId?: Maybe<Scalars['String']>,
+  knexMigration?: Maybe<KnexMigration>,
+  deletedKnexMigrationId?: Maybe<Scalars['ID']>,
+  query?: Maybe<Query>,
+  knexMigrationEdge?: Maybe<KnexMigrationsEdge>,
+};
+
+
+export type DeleteKnexMigrationPayloadKnexMigrationEdgeArgs = {
+  orderBy?: Maybe<Array<KnexMigrationsOrderBy>>
+};
+
+export type DeleteKnexMigrationsLockByIndexInput = {
+  clientMutationId?: Maybe<Scalars['String']>,
+  index: Scalars['Int'],
+};
+
+export type DeleteKnexMigrationsLockInput = {
+  clientMutationId?: Maybe<Scalars['String']>,
+  nodeId: Scalars['ID'],
+};
+
+export type DeleteKnexMigrationsLockPayload = {
+   __typename?: 'DeleteKnexMigrationsLockPayload',
+  clientMutationId?: Maybe<Scalars['String']>,
+  knexMigrationsLock?: Maybe<KnexMigrationsLock>,
+  deletedKnexMigrationsLockId?: Maybe<Scalars['ID']>,
+  query?: Maybe<Query>,
+  knexMigrationsLockEdge?: Maybe<KnexMigrationsLocksEdge>,
+};
+
+
+export type DeleteKnexMigrationsLockPayloadKnexMigrationsLockEdgeArgs = {
+  orderBy?: Maybe<Array<KnexMigrationsLocksOrderBy>>
 };
 
 export type DeletePostByIdInput = {
@@ -245,6 +330,20 @@ export type KnexMigrationCondition = {
   migrationTime?: Maybe<Scalars['Datetime']>,
 };
 
+export type KnexMigrationInput = {
+  id?: Maybe<Scalars['Int']>,
+  name?: Maybe<Scalars['String']>,
+  batch?: Maybe<Scalars['Int']>,
+  migrationTime?: Maybe<Scalars['Datetime']>,
+};
+
+export type KnexMigrationPatch = {
+  id?: Maybe<Scalars['Int']>,
+  name?: Maybe<Scalars['String']>,
+  batch?: Maybe<Scalars['Int']>,
+  migrationTime?: Maybe<Scalars['Datetime']>,
+};
+
 export type KnexMigrationsConnection = {
    __typename?: 'KnexMigrationsConnection',
   nodes: Array<Maybe<KnexMigration>>,
@@ -267,6 +366,16 @@ export type KnexMigrationsLock = Node & {
 };
 
 export type KnexMigrationsLockCondition = {
+  index?: Maybe<Scalars['Int']>,
+  isLocked?: Maybe<Scalars['Int']>,
+};
+
+export type KnexMigrationsLockInput = {
+  index?: Maybe<Scalars['Int']>,
+  isLocked?: Maybe<Scalars['Int']>,
+};
+
+export type KnexMigrationsLockPatch = {
   index?: Maybe<Scalars['Int']>,
   isLocked?: Maybe<Scalars['Int']>,
 };
@@ -312,16 +421,26 @@ export enum KnexMigrationsOrderBy {
 export type Mutation = {
    __typename?: 'Mutation',
   createComment?: Maybe<CreateCommentPayload>,
+  createKnexMigration?: Maybe<CreateKnexMigrationPayload>,
+  createKnexMigrationsLock?: Maybe<CreateKnexMigrationsLockPayload>,
   createPost?: Maybe<CreatePostPayload>,
   createUser?: Maybe<CreateUserPayload>,
   updateComment?: Maybe<UpdateCommentPayload>,
   updateCommentById?: Maybe<UpdateCommentPayload>,
+  updateKnexMigration?: Maybe<UpdateKnexMigrationPayload>,
+  updateKnexMigrationById?: Maybe<UpdateKnexMigrationPayload>,
+  updateKnexMigrationsLock?: Maybe<UpdateKnexMigrationsLockPayload>,
+  updateKnexMigrationsLockByIndex?: Maybe<UpdateKnexMigrationsLockPayload>,
   updatePost?: Maybe<UpdatePostPayload>,
   updatePostById?: Maybe<UpdatePostPayload>,
   updateUser?: Maybe<UpdateUserPayload>,
   updateUserById?: Maybe<UpdateUserPayload>,
   deleteComment?: Maybe<DeleteCommentPayload>,
   deleteCommentById?: Maybe<DeleteCommentPayload>,
+  deleteKnexMigration?: Maybe<DeleteKnexMigrationPayload>,
+  deleteKnexMigrationById?: Maybe<DeleteKnexMigrationPayload>,
+  deleteKnexMigrationsLock?: Maybe<DeleteKnexMigrationsLockPayload>,
+  deleteKnexMigrationsLockByIndex?: Maybe<DeleteKnexMigrationsLockPayload>,
   deletePost?: Maybe<DeletePostPayload>,
   deletePostById?: Maybe<DeletePostPayload>,
   deleteUser?: Maybe<DeleteUserPayload>,
@@ -331,6 +450,16 @@ export type Mutation = {
 
 export type MutationCreateCommentArgs = {
   input: CreateCommentInput
+};
+
+
+export type MutationCreateKnexMigrationArgs = {
+  input: CreateKnexMigrationInput
+};
+
+
+export type MutationCreateKnexMigrationsLockArgs = {
+  input: CreateKnexMigrationsLockInput
 };
 
 
@@ -351,6 +480,26 @@ export type MutationUpdateCommentArgs = {
 
 export type MutationUpdateCommentByIdArgs = {
   input: UpdateCommentByIdInput
+};
+
+
+export type MutationUpdateKnexMigrationArgs = {
+  input: UpdateKnexMigrationInput
+};
+
+
+export type MutationUpdateKnexMigrationByIdArgs = {
+  input: UpdateKnexMigrationByIdInput
+};
+
+
+export type MutationUpdateKnexMigrationsLockArgs = {
+  input: UpdateKnexMigrationsLockInput
+};
+
+
+export type MutationUpdateKnexMigrationsLockByIndexArgs = {
+  input: UpdateKnexMigrationsLockByIndexInput
 };
 
 
@@ -381,6 +530,26 @@ export type MutationDeleteCommentArgs = {
 
 export type MutationDeleteCommentByIdArgs = {
   input: DeleteCommentByIdInput
+};
+
+
+export type MutationDeleteKnexMigrationArgs = {
+  input: DeleteKnexMigrationInput
+};
+
+
+export type MutationDeleteKnexMigrationByIdArgs = {
+  input: DeleteKnexMigrationByIdInput
+};
+
+
+export type MutationDeleteKnexMigrationsLockArgs = {
+  input: DeleteKnexMigrationsLockInput
+};
+
+
+export type MutationDeleteKnexMigrationsLockByIndexArgs = {
+  input: DeleteKnexMigrationsLockByIndexInput
 };
 
 
@@ -655,6 +824,56 @@ export type UpdateCommentPayload = {
 
 export type UpdateCommentPayloadCommentEdgeArgs = {
   orderBy?: Maybe<Array<CommentsOrderBy>>
+};
+
+export type UpdateKnexMigrationByIdInput = {
+  clientMutationId?: Maybe<Scalars['String']>,
+  knexMigrationPatch: KnexMigrationPatch,
+  id: Scalars['Int'],
+};
+
+export type UpdateKnexMigrationInput = {
+  clientMutationId?: Maybe<Scalars['String']>,
+  nodeId: Scalars['ID'],
+  knexMigrationPatch: KnexMigrationPatch,
+};
+
+export type UpdateKnexMigrationPayload = {
+   __typename?: 'UpdateKnexMigrationPayload',
+  clientMutationId?: Maybe<Scalars['String']>,
+  knexMigration?: Maybe<KnexMigration>,
+  query?: Maybe<Query>,
+  knexMigrationEdge?: Maybe<KnexMigrationsEdge>,
+};
+
+
+export type UpdateKnexMigrationPayloadKnexMigrationEdgeArgs = {
+  orderBy?: Maybe<Array<KnexMigrationsOrderBy>>
+};
+
+export type UpdateKnexMigrationsLockByIndexInput = {
+  clientMutationId?: Maybe<Scalars['String']>,
+  knexMigrationsLockPatch: KnexMigrationsLockPatch,
+  index: Scalars['Int'],
+};
+
+export type UpdateKnexMigrationsLockInput = {
+  clientMutationId?: Maybe<Scalars['String']>,
+  nodeId: Scalars['ID'],
+  knexMigrationsLockPatch: KnexMigrationsLockPatch,
+};
+
+export type UpdateKnexMigrationsLockPayload = {
+   __typename?: 'UpdateKnexMigrationsLockPayload',
+  clientMutationId?: Maybe<Scalars['String']>,
+  knexMigrationsLock?: Maybe<KnexMigrationsLock>,
+  query?: Maybe<Query>,
+  knexMigrationsLockEdge?: Maybe<KnexMigrationsLocksEdge>,
+};
+
+
+export type UpdateKnexMigrationsLockPayloadKnexMigrationsLockEdgeArgs = {
+  orderBy?: Maybe<Array<KnexMigrationsLocksOrderBy>>
 };
 
 export type UpdatePostByIdInput = {
