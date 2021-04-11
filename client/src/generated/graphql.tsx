@@ -1027,6 +1027,19 @@ export enum UsersOrderBy {
   PrimaryKeyDesc = 'PRIMARY_KEY_DESC'
 }
 
+export type CreateUserMutationVariables = {
+  user: UserInput
+};
+
+
+export type CreateUserMutation = (
+  { __typename?: 'Mutation' }
+  & { createUser: Maybe<(
+    { __typename?: 'CreateUserPayload' }
+    & Pick<CreateUserPayload, 'clientMutationId'>
+  )> }
+);
+
 export type UpdateUserByIdMutationVariables = {
   id: Scalars['Int'],
   UserPatch: UserPatch
@@ -1056,6 +1069,55 @@ export type GetUsersQuery = (
 );
 
 
+export const CreateUserDocument = gql`
+    mutation createUser($user: UserInput!) {
+  createUser(input: {user: $user}) {
+    clientMutationId
+  }
+}
+    `;
+export type CreateUserMutationFn = ApolloReactCommon.MutationFunction<CreateUserMutation, CreateUserMutationVariables>;
+export type CreateUserComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<CreateUserMutation, CreateUserMutationVariables>, 'mutation'>;
+
+    export const CreateUserComponent = (props: CreateUserComponentProps) => (
+      <ApolloReactComponents.Mutation<CreateUserMutation, CreateUserMutationVariables> mutation={CreateUserDocument} {...props} />
+    );
+    
+export type CreateUserProps<TChildProps = {}> = ApolloReactHoc.MutateProps<CreateUserMutation, CreateUserMutationVariables> & TChildProps;
+export function withCreateUser<TProps, TChildProps = {}>(operationOptions?: ApolloReactHoc.OperationOption<
+  TProps,
+  CreateUserMutation,
+  CreateUserMutationVariables,
+  CreateUserProps<TChildProps>>) {
+    return ApolloReactHoc.withMutation<TProps, CreateUserMutation, CreateUserMutationVariables, CreateUserProps<TChildProps>>(CreateUserDocument, {
+      alias: 'createUser',
+      ...operationOptions
+    });
+};
+
+/**
+ * __useCreateUserMutation__
+ *
+ * To run a mutation, you first call `useCreateUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateUserMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createUserMutation, { data, loading, error }] = useCreateUserMutation({
+ *   variables: {
+ *      user: // value for 'user'
+ *   },
+ * });
+ */
+export function useCreateUserMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<CreateUserMutation, CreateUserMutationVariables>) {
+        return ApolloReactHooks.useMutation<CreateUserMutation, CreateUserMutationVariables>(CreateUserDocument, baseOptions);
+      }
+export type CreateUserMutationHookResult = ReturnType<typeof useCreateUserMutation>;
+export type CreateUserMutationResult = ApolloReactCommon.MutationResult<CreateUserMutation>;
+export type CreateUserMutationOptions = ApolloReactCommon.BaseMutationOptions<CreateUserMutation, CreateUserMutationVariables>;
 export const UpdateUserByIdDocument = gql`
     mutation updateUserById($id: Int!, $UserPatch: UserPatch!) {
   updateUserById(input: {id: $id, userPatch: $UserPatch}) {
