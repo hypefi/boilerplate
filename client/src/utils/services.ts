@@ -6,4 +6,4 @@ import {
 
 export const useGetUsers = useGetUsersQuery
 export const useUpdateUserById = useUpdateUserByIdMutation
-export const createUsers = useCreateUserMutation
+export const useCreateUser = useCreateUserMutation
