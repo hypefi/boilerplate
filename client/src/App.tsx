@@ -4,6 +4,7 @@ import client from './ApolloClient'
 import { ApolloProvider } from '@apollo/react-hooks'
 import './App.css'
 import Users from './Components/Users'
+import CreateUser from './Components/CreateUser'
 
 const App: React.FC = () => {
   return (
@@ -14,6 +15,7 @@ const App: React.FC = () => {
           <p>
             Edit <code>src/App.tsx</code> and save to reload.
           </p>
+          <CreateUser />
           <Users />
         </header>
       </div>
