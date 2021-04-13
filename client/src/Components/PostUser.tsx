@@ -27,7 +27,7 @@ const PostUser = (props: postUser) => {
       }, [name, email, password])
     
 
-    const postUser = async () => {
+   const postUser = async () => {
         try {
             const postedUser = await createUser({
                 variables: {
@@ -48,30 +48,32 @@ const PostUser = (props: postUser) => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        console.log(values.name, values.email, values.password)
+    console.log('values', values)
+    console.log('submit',values.name, values.email, values.password)
      if (values.name ) {
             postUser()
      } else {
          alert('Invalid user details')
      }
     }
- 
+    
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
          const target = event.target
          const val = target.value
-         setValues({
+         console.log("target", target.id, "val", val)
+          setValues({
              ...values,
-             name: val,
+           [event.target.id]: val,
          })
      }
-
+    
 
     return (
         <form className="Form" onSubmit={(e) => handleSubmit(e)}>
             <div>
                 <div>
                     <label htmlFor="name">Name</label>
-                    <input onChange={handleChange} type="text" id="title" />
+                    <input onChange={handleChange} type="text" id="name" />
                 </div>
                 <div>
                     <label htmlFor="email">email</label>
