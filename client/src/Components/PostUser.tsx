@@ -70,7 +70,7 @@ const PostUser = (props: postUser) => {
         <form className="Form" onSubmit={(e) => handleSubmit(e)}>
             <div>
                 <div>
-                    <label htmlFor="name">Title</label>
+                    <label htmlFor="name">Name</label>
                     <input onChange={handleChange} type="text" id="title" />
                 </div>
                 <div>
@@ -79,7 +79,7 @@ const PostUser = (props: postUser) => {
                   </div>
                 <div>
                     <label htmlFor="password">password</label>
-                    <input onChange={handleChange} type="text" id="password" />
+                    <input onChange={handleChange} type="password" id="password" />
                 </div>
             </div>
             <button type="submit">Create User</button>

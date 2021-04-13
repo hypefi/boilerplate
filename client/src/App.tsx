@@ -15,7 +15,7 @@ const App: React.FC = () => {
           <p>
             Edit <code>src/App.tsx</code> and save to reload.
           </p>
-          <PostUser />
+          <PostUser name={''} email={''} password={''}/>
           <Users />
         </header>
       </div>
