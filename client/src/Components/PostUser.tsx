@@ -8,8 +8,8 @@ interface postUser {
     password: string
 }
 
-
-const PostUser = (props: postUser) => {
+//still to check inputs syntax
+const PostUser = ( query, handleQuery, props: postUser) => {
       const [createUser] = useCreateUser()
       const { name, email, password } = props
       const [values, setValues] = useState({
@@ -39,7 +39,9 @@ const PostUser = (props: postUser) => {
                 },
             })
             if (postedUser && postedUser.data && postedUser.data.createUser) {
-                alert('Data updated suvvessfully')
+              alert('Data updated successfully')
+          
+              
             }
         } catch (error) {
             console.error(error)
@@ -51,7 +53,8 @@ const PostUser = (props: postUser) => {
     console.log('values', values)
     console.log('submit',values.name, values.email, values.password)
      if (values.name ) {
-            postUser()
+       postUser()
+       handleQuery(event)
      } else {
          alert('Invalid user details')
      }

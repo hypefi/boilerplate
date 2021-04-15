@@ -13,6 +13,7 @@ const UpdateUser = (props: updateUser) => {
         id: id,
         name: name,
     })
+
     useEffect(() => {
         setValues({
             ...values,
@@ -46,6 +47,7 @@ const UpdateUser = (props: updateUser) => {
                 updatedUser.data.updateUserById
             ) {
                 alert('Data updated successfully!')
+               
             }
         } catch (error) {
             console.error(error)
