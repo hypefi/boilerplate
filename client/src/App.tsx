@@ -9,15 +9,14 @@ import PostUser from './Components/PostUser'
 
 const App: React.FC = () => {
   const [query, setQuery] = React.useState('');
- 
   const handleQuery = (event: any) => {
     setQuery(event.target.value);
-  };
+    console.log(query);
 
-  console.log(query);
-
-  var newreload = query;
-
+    };
+ 
+  const newreload = query; 
+  
   return (
     <ApolloProvider client={client}>
       <div className="App">
@@ -26,7 +25,7 @@ const App: React.FC = () => {
           <p>
             Edit <code>src/App.tsx</code> and save to reload.
           </p>
-          <PostUser query={query} handleQuery={handleQuery} name={''} email={''} password={''}/>
+          <PostUser handleQuery={handleQuery} name={''} email={''} password={''}/>
           <Users newreload={newreload} />
         </header>
       </div>

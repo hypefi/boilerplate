@@ -9,7 +9,7 @@ interface postUser {
 }
 
 //still to check inputs syntax
-const PostUser = ( query, handleQuery, props: postUser) => {
+const PostUser = (handleQuery: any, props: postUser) => {
       const [createUser] = useCreateUser()
       const { name, email, password } = props
       const [values, setValues] = useState({
@@ -39,7 +39,7 @@ const PostUser = ( query, handleQuery, props: postUser) => {
                 },
             })
             if (postedUser && postedUser.data && postedUser.data.createUser) {
-              alert('Data updated successfully')
+              //            alert('Data updated successfully')
           
               
             }
@@ -54,7 +54,7 @@ const PostUser = ( query, handleQuery, props: postUser) => {
     console.log('submit',values.name, values.email, values.password)
      if (values.name ) {
        postUser()
-       handleQuery(event)
+       // handleQuery(event)
      } else {
          alert('Invalid user details')
      }
@@ -87,7 +87,7 @@ const PostUser = ( query, handleQuery, props: postUser) => {
                     <input onChange={handleChange} type="password" id="password" />
                 </div>
             </div>
-            <button type="submit">Create User</button>
+            <button type="submit" onClick={handleQuery}>Create User</button>
         </form>
     )
 }

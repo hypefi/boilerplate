@@ -3,10 +3,10 @@ import { useGetUsers } from '../utils/services'
 import { User } from '../generated/graphql'
 import UpdateUser from './UpdateUser'
 
-var newreload;
+//var newreload;
 
-const Users: React.FC = ({newreload}) => {
-    const [users, setUsers] = useState(reload)
+const Users = ({newreload}) => {
+  const [users, setUsers] = useState(newreload)
     const { data, error, loading } = useGetUsers()
     const [values, setValues] = useState({
         id: 0,
