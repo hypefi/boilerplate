@@ -5,8 +5,8 @@ import UpdateUser from './UpdateUser'
 
 //var newreload;
 
-const Users = ({newreload}) => {
-  const [users, setUsers] = useState(newreload)
+const Users = ({query}) => {
+    const [users, setUsers] = useState(query)
     const { data, error, loading } = useGetUsers()
     const [values, setValues] = useState({
         id: 0,
@@ -21,10 +21,12 @@ const Users = ({newreload}) => {
         })
     }
 
-    useEffect(() => {
+  useEffect(() => {
+    console.log(query);
         if (data) {
             if (data && data.allUsers && data.allUsers.nodes) {
-                setUsers(data.allUsers.nodes)
+console.log("setting")
+              setUsers(data.allUsers.nodes)
             }
         }
         if (error) {
@@ -33,7 +35,7 @@ const Users = ({newreload}) => {
         if (loading) {
             console.log(loading)
         }
-    }, [data, error, loading])
+    }, [data, error, loading, query])
 
     return (
         <>
