@@ -2,6 +2,16 @@ require('dotenv').config()
 
 const { CLIENT, DATABASE, PG_USER, PASSWORD, HOST, PG_PORT } = process.env
 
+console.log ({
+        client: CLIENT,
+        connection: {
+            database: DATABASE,
+            user: PG_USER,
+            password: PASSWORD,
+            host: HOST,
+            port: PG_PORT,
+        }});
+
 module.exports = {
     development: {
         client: CLIENT,

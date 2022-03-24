@@ -14,12 +14,12 @@
         "cors": "^2.8.5",
         "express": "^4.17.1",
         "graphile-build-pg": "^4.11.2",
-        "knex": "^0.20.8",
+        "knex": "^1.0.4",
         "knex-migrate": "^1.7.4",
         "nodemon": "^2.0.2",
-        "pg": "^7.17.1",
+        "pg": "^8.0.3",
         "postgraphile": "^4.5.5",
-        "sqlite3": "^5.0.2"
+        "sqlite3": "^4.2.0"
     },
     "devDependencies": {
         "dotenv": "^8.2.0"
