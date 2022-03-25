@@ -4,9 +4,12 @@ export default gql`
   query getJobs {
     allJobs {
       nodes {
-        email
         id
         name
+        description
+        salary
+        datePosted
+        account_verified
         createdAt
       }
     }
